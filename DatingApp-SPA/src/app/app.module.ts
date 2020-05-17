@@ -9,11 +9,13 @@ import { NavComponent } from './components/nav/nav.component';
 import { RegisterComponent } from './components/register/register.component';
 
 import { AuthService } from './services/auth.service';
-import { ErrorInterceptor, ErrorInterceptorProvider } from './services/error.interceptor';
+import { ErrorInterceptorProvider } from './services/error.interceptor';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, NavComponent, RegisterComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, BrowserAnimationsModule, BsDropdownModule.forRoot()],
   providers: [AuthService, ErrorInterceptorProvider],
   bootstrap: [AppComponent],
 })

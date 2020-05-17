@@ -46,11 +46,11 @@ namespace DatingApp.API.Controllers
         public async Task<IActionResult> Login(UserForLoginDto userForLoginDto)
         {
             var userFromRepo = await repo.Login(userForLoginDto.Username.ToLower(), userForLoginDto.Password);
-            if(userFromRepo == null) return Unauthorized();
+                if(userFromRepo == null) return Unauthorized();
 
             var claims = new[] {
                 new Claim(ClaimTypes.NameIdentifier, userFromRepo.Id.ToString()),
-                new Claim(ClaimTypes.NameIdentifier, userFromRepo.Username)
+                new Claim(ClaimTypes.Name, userFromRepo.Username)
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));
